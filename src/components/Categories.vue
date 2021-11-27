@@ -15,7 +15,7 @@
 import { ApiService } from "@/services/apiService";
 import { defineComponent } from "vue";
 
-const api = new ApiService("http://localhost:8010/proxy/categories");
+const api = new ApiService("http://localhost:8010/proxy/expenses/categories");
 export default defineComponent({
   name: "Categories",
   components: {},
