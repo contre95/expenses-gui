@@ -13,9 +13,12 @@
 
 <script lang="ts">
 import { ApiService } from "@/services/apiService";
+import { SelectOption } from "@/types/internal";
 import { defineComponent } from "vue";
 
-const api = new ApiService("http://localhost:8010/proxy/expenses/categories");
+const api = new ApiService(
+  "http://192.168.1.190:8010/proxy/expenses/categories"
+);
 export default defineComponent({
   name: "Categories",
   components: {},
@@ -26,9 +29,20 @@ export default defineComponent({
     };
   },
   async created() {
-    const value = await api.getCategories();
-    this.options = value;
-    console.log("data", this.options);
+    const resp = await api.getCategories();
+    let opt: SelectOption[] = [];
+    if (resp.success && resp.data != null) {
+      for (let category of resp.data) {
+        console.log(category);
+        let new_cat: SelectOption = {
+          text: category.Name as string,
+          value: category.ID as string,
+        };
+        opt.push(new_cat);
+      }
+    }
+    console.log(opt);
+    this.options = opt;
   },
 });
 </script>

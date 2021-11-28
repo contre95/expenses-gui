@@ -1,15 +1,4 @@
-import axios from "axios";
-
-interface ServerResponse {
-  data: CategoryIface;
-}
-
-interface CategoryIface {
-  name: string;
-  value: string;
-  id: number;
-}
-
+import { APIResponse } from "@/types/external";
 export class ApiService {
   private url: string;
 
@@ -17,9 +6,10 @@ export class ApiService {
     this.url = url;
   }
 
-  getCategories = async () => {
-    const resp = await fetch(this.url).then((val) => val.json()).catch(err => err);
-    console.log(resp);
+  getCategories = async (): Promise<APIResponse> => {
+    const resp = await fetch(this.url)
+      .then((val) => val.json())
+      .catch((err) => err);
     return resp;
   };
 }
