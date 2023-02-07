@@ -16,11 +16,6 @@
           >
           Start tracking
             </NuxtLink>
-          <a
-            to="/expenses"
-            class="text-base font-semibold leading-7 text-gray-900"
-            >Learn more <span aria-hidden="true">→</span></a
-          >
         </div>
       </div>
     </div>
@@ -28,10 +23,7 @@
 </template>
 
 <script setup>
-/*export default {*/
-
-/*}*/
 </script>
->
+
 
 <style lang="css" scoped></style>
